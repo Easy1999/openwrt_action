@@ -20,6 +20,5 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-
     - name: floder
-      uses: coolsnowwolf/lede@main
+      uses: coolsnowwolf/lede@master
