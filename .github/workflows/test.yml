@@ -19,6 +19,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
-    steps:
+
+
     - name: floder
       uses: coolsnowwolf/lede@main
