@@ -21,4 +21,4 @@ jobs:
       uses: actions/checkout@main
 
     - name: floder
-      uses: coolsnowwolf/lede@master
+      uses: coolsnowwolf/lede@lede-17.01
