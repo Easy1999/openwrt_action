@@ -45,13 +45,22 @@ jobs:
 
     - name: print env
       run: |
-        echo "env: -----------------------------------"
-        env
-        echo "pwd: -----------------------------------"
-        pwd
-        echo "ls: -----------------------------------"
-        ls
-        echo "sssssssssssssssss$GITHUB_WORKSPACE"
+        echo "test env" > test.txt
+        echo "env: -----------------------------------"  >> test.txt
+        env >> text.txt
+        echo "pwd: -----------------------------------" >> text.txt
+        pwd >> text.txt
+        echo "ls: -----------------------------------" >> text.txt
+        ls >> text.txt
+        echo "sssssssssssssssss$GITHUB_WORKSPACE" >> text.txt
+    
+    - name: Upload firmware to WeTransfer
+      id: wetransfer
+      run: |
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer wet -s -p 16 --no-progress text.txt 2>&1 | tee wetransfer.log
+        echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
+        echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
 
 
 
